@@ -1,6 +1,6 @@
 import streamlit as st
 import scraper as sc
-from parser import parse_with_ollama
+from parser import parse_with_groq
 
 st.title("Web Scraper")
 
@@ -26,7 +26,7 @@ if "dom_content" in st.session_state:
         if parse_description:
             st.write("parsing content")
             dom_chunks = sc.split_dom(st.session_state.dom_content)
-            result = parse_with_ollama(dom_chunks, parse_description)
+            result = parse_with_groq(dom_chunks, parse_description)
             st.write(result)
         
 
